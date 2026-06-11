@@ -47,3 +47,8 @@ def test_create_new_post():
     assert data["body"] == "This post was created using an automated API test."
     assert data["userId"] == 1
     assert "id" in data
+
+def test_get_missing_post_returns_404():
+    response = requests.get("https://jsonplaceholder.typicode.com/posts/999999")
+
+    assert response.status_code == 404
